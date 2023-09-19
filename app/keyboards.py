@@ -1,24 +1,28 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
 
 main_kb = [
-    [KeyboardButton(text='Каталог'),
-     KeyboardButton(text='Корзина')],
     [KeyboardButton(text='Мой профиль'),
-     KeyboardButton(text='Контакты')]
+     KeyboardButton(text='Котировки')]
 ]
 
 main = ReplyKeyboardMarkup(keyboard=main_kb,
                            resize_keyboard=True,
                            input_field_placeholder='Выберите пункт')
 
-socials_kb = [
-    [InlineKeyboardButton(text='Telegram', url='web.telegram.org')],
-    [InlineKeyboardButton(text='YouTube', url='youtube.com')]
-]
-
-socials = InlineKeyboardMarkup(inline_keyboard=socials_kb)
-
-catalog = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='adidas', callback_data='adidas')],
-    [InlineKeyboardButton(text='nike', callback_data='nike')]
+crypto = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='BTC', callback_data='crypto_BTC')],
+    [InlineKeyboardButton(text='ETH', callback_data='crypto_ETH')]
 ])
+
+profile = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Подписки', callback_data='subscription')],
+    [InlineKeyboardButton(text='Что-то', callback_data='some')]
+])
+
+
+def payment(url, id):
+    keybord = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text='Ссылка', url=url)],
+        [InlineKeyboardButton(text='Проверить оплату', callback_data=f"id:{id}")]
+    ])
+    return keybord

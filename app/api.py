@@ -9,4 +9,4 @@ async def get_crypto_price(crypto):
 
     ticker = client.get_symbol_ticker(symbol=f"{crypto}USDT")
 
-    return ticker['price']
+    return round(float(ticker['price']), 2)
